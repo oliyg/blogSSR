@@ -1,5 +1,6 @@
 import express from 'express'
 import { matchRoutes } from 'react-router-config'
+import proxy from 'express-http-proxy'
 import { getStore } from '../store/'
 import render from './utils/render'
 import routes from '../../routes'
@@ -7,6 +8,13 @@ import routes from '../../routes'
 const app = express()
 
 app.use(express.static('public'))
+app.use('/api', proxy('hapiblog.oliyg.com', {
+  https: true,
+  proxyReqPathResolver: (req) => {
+    console.log(req.url, 'proxing...')
+    return `${req.url}`
+  }
+}))
 app.get('*', (req, res) => {
   const store = getStore()
 
@@ -27,6 +35,7 @@ app.get('*', (req, res) => {
 const config = {
   PORT: 3000,
   HOST: 'localhost'
+
 }
 
 app.listen(config.PORT, config.HOST, () => {

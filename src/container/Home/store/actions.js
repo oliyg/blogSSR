@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { CHANGE_BLOGLIST } from './constants'
 
 const changeList = (results) => ({
@@ -7,8 +6,8 @@ const changeList = (results) => ({
 })
 
 export const getBlogList = () => {
-  return dispatch => {
-    return axios.get('https://hapiblog.oliyg.com/blog', {
+  return (dispatch, getState, axiosRequest) => {
+    return axiosRequest.get('/blog', {
       params: { limit: 15, page: 1, pagination: true }
     }).then(d => {
       d = d.data
