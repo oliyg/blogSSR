@@ -8,7 +8,7 @@ export default [{
   exact: true,
   loadData: Home.loadData
 }, {
-  path: '/',
+  path: '/about',
   component: About,
   key: 'About',
   exact: true

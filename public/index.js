@@ -1430,7 +1430,7 @@ eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpack
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Home = __webpack_require__(/*! ./src/container/Home/ */ \"./src/container/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _About = __webpack_require__(/*! ./src/container/About/ */ \"./src/container/About/index.js\");\n\nvar _About2 = _interopRequireDefault(_About);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = [{\n  path: '/',\n  component: _Home2.default,\n  key: 'Home',\n  exact: true,\n  loadData: _Home2.default.loadData\n}, {\n  path: '/',\n  component: _About2.default,\n  key: 'About',\n  exact: true\n}];\n\n//# sourceURL=webpack:///./routes.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Home = __webpack_require__(/*! ./src/container/Home/ */ \"./src/container/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _About = __webpack_require__(/*! ./src/container/About/ */ \"./src/container/About/index.js\");\n\nvar _About2 = _interopRequireDefault(_About);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = [{\n  path: '/',\n  component: _Home2.default,\n  key: 'Home',\n  exact: true,\n  loadData: _Home2.default.loadData\n}, {\n  path: '/about',\n  component: _About2.default,\n  key: 'About',\n  exact: true\n}];\n\n//# sourceURL=webpack:///./routes.js?");
 
 /***/ }),
 
