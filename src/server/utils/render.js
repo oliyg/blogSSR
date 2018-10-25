@@ -1,6 +1,7 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { StaticRouter, Route } from 'react-router-dom'
+import { StaticRouter } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 
 export default (store, routes, req) => {
@@ -8,10 +9,8 @@ export default (store, routes, req) => {
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
         <div>
-          { // 遍历路由使用 Route 挂载
-            routes.map(route => (
-              <Route {...route} />
-            ))
+          {
+            renderRoutes(routes)
           }
         </div>
       </StaticRouter>

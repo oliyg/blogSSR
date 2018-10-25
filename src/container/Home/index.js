@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Header from '../../components/Header/'
 import { getBlogList } from './store/actions'
 
 class Home extends Component {
   render () {
     return (
       <div>
-        <Header />
         <div onClick={() => { console.log('d') }}>home</div>
         <div>
           {this.getList()}
