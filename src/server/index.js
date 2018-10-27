@@ -23,7 +23,11 @@ app.get('*', (req, res) => {
   const promises = []
   matchedRoutes.forEach(item => {
     if (item.route.loadData) {
-      promises.push(item.route.loadData(store))
+      const promise = new Promise(resolve => {
+        // 解决资源加载错误 Promise.all 逻辑不执行问题
+        item.route.loadData(store).then(resolve).catch(resolve)
+      })
+      promises.push(promise)
     }
   })
   Promise.all(promises).then(() => {
