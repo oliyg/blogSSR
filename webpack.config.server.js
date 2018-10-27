@@ -11,5 +11,17 @@ module.exports = merge(base, {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build')
+  },
+  module: {
+    rules: [{
+      test: /\.css?$/,
+      use: ['isomorphic-style-loader', {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          localIdentName: '[name]__[local]--[hash:base64:5]'
+        }
+      }]
+    }]
   }
 })

@@ -31,7 +31,7 @@ app.get('*', (req, res) => {
     }
   })
   Promise.all(promises).then(() => {
-    let context = {} // 定义上下文
+    let context = { css: [] } // 定义上下文
     let html = render(store, routes, req, context)
     if (context.PAGE_NOT_FOUND) {
       res.status(404); res.send(html)

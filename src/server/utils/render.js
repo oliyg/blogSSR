@@ -16,6 +16,7 @@ export default (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   ))
+  const cssString = context.css.length ? context.css.join('\n') : ''
   return (`
   <!DOCTYPE html>
   <html lang="en">
@@ -23,6 +24,7 @@ export default (store, routes, req, context) => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <style>${cssString}</style>
   </head>
   <body>
       <div id="root">${content}</div>
