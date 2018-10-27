@@ -27,7 +27,13 @@ app.get('*', (req, res) => {
     }
   })
   Promise.all(promises).then(() => {
-    res.send(render(store, routes, req))
+    let context = {} // 定义上下文
+    let html = render(store, routes, req, context)
+    if (context.PAGE_NOT_FOUND) {
+      res.status(404); res.send(html)
+    } else {
+      res.send(html)
+    }
   })
   // 服务端匹配路由并异步获取数据 end
 })

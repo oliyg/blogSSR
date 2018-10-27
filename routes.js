@@ -1,5 +1,6 @@
 import Home from './src/container/Home/'
 import About from './src/container/About/'
+import PageNotFound from './src/container/PageNotFound/'
 import App from './src/App'
 
 export default [{
@@ -16,5 +17,7 @@ export default [{
     component: About,
     key: 'About',
     exact: true
+  }, {
+    component: PageNotFound
   }]
 }]
