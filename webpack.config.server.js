@@ -24,6 +24,15 @@ module.exports = (env, argv) => {
             localIdentName: '[name]__[local]--[hash:base64:5]'
           }
         }]
+      }, {
+        test: /\.styl$/,
+        use: [ 'isomorphic-style-loader', {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            localIdentName: '[name]__[local]--[hash:base64:5]'
+          }
+        }, { loader: 'stylus-loader' } ]
       }]
     }
   })

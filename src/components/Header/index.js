@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import style from './style.css'
+import style from './style'
 
 class Header extends Component {
   componentWillMount () {
