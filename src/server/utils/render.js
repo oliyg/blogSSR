@@ -25,6 +25,8 @@ export default (store, routes, req, context) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <style>${cssString}</style>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
       <div id="root">${content}</div>
