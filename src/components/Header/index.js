@@ -1,55 +1,23 @@
-import React, { Component } from 'react'
-import { PropTypes } from 'prop-types'
-import BottomNavigation from '@material-ui/core/BottomNavigation'
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import HomeIcon from '@material-ui/icons/Home'
-import InfoIcon from '@material-ui/icons/Info'
-import { withStyles } from '@material-ui/core/'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 
-const styles = theme => ({
-  wrapper: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    marginLeft: '-16px'
-  }
-})
+const styles = {}
 
-class Header extends Component {
-  constructor () {
-    super(...arguments)
-    this.state = {
-      value: 0
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange (event, value) {
-    this.setState({ value })
-    switch (value) {
-      case 0:
-        this.props.history.push('/')
-        break
-      case 1:
-        this.props.history.push('/about')
-        break
-    }
-  }
-
-  render () {
-    const { classes } = this.props
-    return (
-      <BottomNavigation
-        value={this.state.value}
-        onChange={this.handleChange}
-        showLabels
-        className={classes.wrapper}
-      >
-        <BottomNavigationAction label="主页" icon={<HomeIcon />} />
-        <BottomNavigationAction label="关于" icon={<InfoIcon />} />
-      </BottomNavigation>
-    )
-  }
+const Header = (props) => {
+  const { classes, location } = props
+  return (
+    <AppBar position="static" color="primary">
+      <Toolbar>
+        <Typography variant="h6" color="inherit">
+          {location.pathname.substring(1).length === 0 ? 'HOME' : location.pathname.substring(1).toUpperCase()}
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  )
 }
 
 Header.propTypes = {
