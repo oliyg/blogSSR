@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
-import style from './style'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import HomeIcon from '@material-ui/icons/Home'
@@ -11,7 +10,8 @@ const styles = theme => ({
   wrapper: {
     position: 'absolute',
     bottom: 0,
-    width: '100%'
+    width: '100%',
+    marginLeft: '-16px'
   }
 })
 
@@ -22,12 +22,6 @@ class Header extends Component {
       value: 0
     }
     this.handleChange = this.handleChange.bind(this)
-  }
-
-  componentWillMount () {
-    if (this.props.staticContext) {
-      this.props.staticContext.css.push(style._getCss())
-    }
   }
 
   handleChange (event, value) {
@@ -45,16 +39,15 @@ class Header extends Component {
   render () {
     const { classes } = this.props
     return (
-      <div className={classes.wrapper}>
-        <BottomNavigation
-          value={this.state.value}
-          onChange={this.handleChange}
-          showLabels
-        >
-          <BottomNavigationAction label="主页" icon={<HomeIcon />} />
-          <BottomNavigationAction label="关于" icon={<InfoIcon />} />
-        </BottomNavigation>
-      </div>
+      <BottomNavigation
+        value={this.state.value}
+        onChange={this.handleChange}
+        showLabels
+        className={classes.wrapper}
+      >
+        <BottomNavigationAction label="主页" icon={<HomeIcon />} />
+        <BottomNavigationAction label="关于" icon={<InfoIcon />} />
+      </BottomNavigation>
     )
   }
 }
