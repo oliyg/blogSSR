@@ -8,10 +8,10 @@ import { withStyles } from '@material-ui/core/'
 
 const styles = theme => ({
   wrapper: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: 0,
     width: '100%',
-    marginLeft: '-16px'
+    marginLeft: '-16'
   }
 })
 

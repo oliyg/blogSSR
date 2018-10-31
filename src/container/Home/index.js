@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getBlogList } from './store/actions'
+import Card from '../../components/Card'
+import style from './style.styl'
+import LoadMore from '../../components/LoadMore'
 
 class Home extends Component {
+  constructor () {
+    super(...arguments)
+    this.state = {
+      currentPage: 1
+    }
+    this.handleLoadMore = this.handleLoadMore.bind(this)
+  }
   render () {
     return (
-      <div>
-        <div onClick={() => { console.log('d') }}>home</div>
-        <div>
-          {this.getList()}
-        </div>
+      <div className={style.wrapper}>
+        {this.getList()}
+        <LoadMore onClick={this.handleLoadMore} />
       </div>
     )
   }
@@ -19,12 +27,15 @@ class Home extends Component {
       this.props.getBlogList()
     }
   }
+  handleLoadMore (d) {
+    this.setState({ currentPage: ++this.state.currentPage }, () => {
+      this.props.getBlogList(this.state.currentPage)
+    })
+  }
   getList () {
     return this.props.blogList.map(item => {
       return (
-        <ul key={item.id}>
-          <li>{item.title}</li>
-        </ul>
+        <Card key={item.id} blogItem={item}></Card>
       )
     })
   }
@@ -34,8 +45,8 @@ const mapState = state => ({
   blogList: state.home.blogList
 })
 const mapDispatch = dispatch => ({
-  getBlogList () {
-    dispatch(getBlogList())
+  getBlogList (currentPage) {
+    dispatch(getBlogList(currentPage))
   }
 })
 
