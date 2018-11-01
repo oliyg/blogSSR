@@ -33,7 +33,8 @@ class Home extends Component {
     })
   }
   getList () {
-    return this.props.blogList.map(item => {
+    const { blogList } = this.props
+    return blogList.map(item => {
       return (
         <Card key={item.id} blogItem={item}></Card>
       )

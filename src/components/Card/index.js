@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import dayjs from 'dayjs'
+import { Link } from 'react-router-dom'
 
 const styles = {
   card: {
@@ -26,6 +27,7 @@ const SimpleCard = props => {
   const tags = blogItem.tag.split(';').join(' ')
   const date = dayjs(blogItem.created_at).format('YYYY年MM月DD日')
   const short = blogItem.short.length > 120 ? blogItem.short.substr(0, 120) + '...' : blogItem.short
+  console.log(blogItem.id)
 
   return (
     <Card className={classes.card}>
@@ -36,7 +38,7 @@ const SimpleCard = props => {
         <Typography component="p">{short}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">More</Button>
+        <Button component={Link} to={`/detail/${blogItem.id}`} size="small">More</Button>
       </CardActions>
     </Card>
   )
