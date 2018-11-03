@@ -25,7 +25,7 @@ app.get('*', (req, res) => {
     if (item.route.loadData) {
       const promise = new Promise(resolve => {
         // 解决资源加载错误 Promise.all 逻辑不执行问题
-        item.route.loadData(store).then(resolve).catch(resolve)
+        item.route.loadData(store, req).then(resolve).catch(resolve) // 如果需要获取 req 路由则传递
       })
       promises.push(promise)
     }

@@ -22,7 +22,8 @@ export default [{
     path: '/detail/:id',
     component: Detail,
     key: 'Detail',
-    exact: true
+    exact: true,
+    loadData: Detail.loadData
   }, {
     component: PageNotFound
   }]
