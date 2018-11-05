@@ -1,20 +1,6 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
-import BottomNavigation from '@material-ui/core/BottomNavigation'
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import HomeIcon from '@material-ui/icons/Home'
-import InfoIcon from '@material-ui/icons/Info'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import { withStyles } from '@material-ui/core/'
-
-const styles = theme => ({
-  wrapper: {
-    position: 'fixed',
-    bottom: 0,
-    width: '100%',
-    marginLeft: '-16'
-  }
-})
+import style from './style.styl'
 
 class Header extends Component {
   constructor () {
@@ -22,10 +8,10 @@ class Header extends Component {
     this.state = {
       value: 0
     }
-    this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleChange (event, value) {
+  handleClick (value) {
     this.setState({ value })
     switch (value) {
       case 0:
@@ -41,24 +27,21 @@ class Header extends Component {
   }
 
   render () {
-    const { classes } = this.props
+    const arr = ['主页', '登录', '关于']
     return (
-      <BottomNavigation
-        value={this.state.value}
-        onChange={this.handleChange}
-        showLabels
-        className={classes.wrapper}
-      >
-        <BottomNavigationAction label="主页" icon={<HomeIcon />} />
-        <BottomNavigationAction label="登录" icon={<AccountCircleIcon />} />
-        <BottomNavigationAction label="关于" icon={<InfoIcon />} />
-      </BottomNavigation>
+      <ul ref="list" className={style.container}>
+        {
+          arr.map((item, index) => <li className={
+            (index === this.state.value) ? style.active_item : ''
+          } label={item} onClick={(e) => { this.handleClick(index) }} key={index}>{item}</li>)
+        }
+      </ul>
     )
   }
 }
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Header)
+export default Header
