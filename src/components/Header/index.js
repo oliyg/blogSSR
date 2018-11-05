@@ -1,27 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-
-const styles = {}
+import style from './style.styl'
 
 const Header = (props) => {
-  const { classes, location } = props
+  const { location } = props
   return (
-    <AppBar position="static" color="primary">
-      <Toolbar>
-        <Typography variant="h6" color="inherit">
-          {location.pathname.substring(1).length === 0 ? 'HOME' : location.pathname.substring(1).toUpperCase()}
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <div className={style.container}>
+      {location.pathname.substring(1).length === 0 ? 'HOME' : location.pathname.substring(1).toUpperCase()}
+    </div>
   )
 }
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Header)
+export default Header
