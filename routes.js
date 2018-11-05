@@ -3,6 +3,7 @@ import About from './src/container/About/'
 import PageNotFound from './src/container/PageNotFound/'
 import App from './src/App'
 import Detail from './src/container/Detail'
+import Login from './src/container/Login'
 
 export default [{
   path: '/',
@@ -13,6 +14,11 @@ export default [{
     key: 'Home',
     exact: true,
     loadData: Home.loadData
+  }, {
+    path: '/login',
+    component: Login,
+    key: 'Login',
+    exact: true
   }, {
     path: '/about',
     component: About,
