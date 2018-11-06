@@ -1,38 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
+import dayjs from 'dayjs'
+import style from './style.styl'
 
-const styles = theme => ({
-  root: {
-    ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
-  }
-})
-
-function DetailCard (props) {
-  const { classes, detailData } = props
-  const { id, title, count, content } = detailData
+const DetailCard = (props) => {
+  const { detailData } = props
+  console.log(detailData)
+  const { title, count, content } = detailData
+  const date = dayjs(detailData.created_at).format('YYYY年MM月DD日')
+  const updateDate = dayjs(detailData.updated_at).format('YYYY年MM月DD日')
 
   return (
-    <div>
-      <Paper className={classes.root} elevation={1}>
-        <Typography variant="h5" component="h3">
-          {title}
-        </Typography>
-        <Typography component="p">
-          {content}
-        </Typography>
-      </Paper>
+    <div className={style.container}>
+      <div className={style.title}>{title}</div>
+      <div className={style.count}>{count}次阅读</div>
+      <div className={style.detail}>
+        <div className={style.detail_item}>发布日期 {date}</div>
+        <div className={style.detail_item}>更新日期 {updateDate}</div>
+      </div>
+      <div className={style.content}>{content}</div>
     </div>
   )
 }
 
 DetailCard.propTypes = {
-  classes: PropTypes.object.isRequired,
   detailData: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(DetailCard)
+export default DetailCard

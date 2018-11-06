@@ -18,7 +18,7 @@ const SimpleCard = props => {
         <div className={style.title}>{blogItem.title}</div>
         <div className={style.tags}>{tags}</div>
         <div className={style.short}>{short}</div>
-        <button className={style.btn}>More</button>
+        <Link className={style.btn} to={'/detail/' + blogItem.id} >More</Link>
       </div>
     </div>
   )
