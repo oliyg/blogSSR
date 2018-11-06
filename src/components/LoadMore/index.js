@@ -1,20 +1,11 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core'
-import Button from '@material-ui/core/Button'
-
-const style = {
-  button: {
-    display: 'block',
-    margin: '0 auto',
-    marginTop: 20
-  }
-}
+import style from './style.styl'
 
 const LoadMoreBtn = props => {
-  const { classes, onClick } = props
+  const { onClick } = props
   return (
-    <Button onClick={onClick} variant="outlined" color="primary" className={classes.button}>查看更多</Button>
+    <button onClick={onClick} className={style.button}>查看更多</button>
   )
 }
 
-export default withStyles(style)(LoadMoreBtn)
+export default LoadMoreBtn

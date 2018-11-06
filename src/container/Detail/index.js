@@ -11,7 +11,6 @@ class Detail extends Component {
     }
   }
   componentDidMount () {
-    console.log(this.state.currentId === this.props.blogDetail.id)
     if (this.state.currentId !== this.props.blogDetail.id) {
       this.props.getBlogDetail(this.state.currentId)
     }
