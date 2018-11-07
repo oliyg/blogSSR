@@ -8,20 +8,27 @@ class Write extends Component {
     super(...arguments)
     this.state = {
       title: '',
-      tag: [],
+      tag: '',
       content: '',
       short: '',
       errMsg: ''
     }
+    this.handleChangeValue = this.handleChangeValue.bind(this)
     this.handleClickSubmit = this.handleClickSubmit.bind(this)
+    this.handleClickReset = this.handleClickReset.bind(this)
+  }
+  handleChangeValue (e, name) {
+    this.setState({ [name]: e.target.value })
+  }
+  handleClickReset () {
+    console.log('reset')
+    this.setState({ title: '', tag: '', content: '', short: '', errMsg: '' }, () => { console.log(this.state) })
   }
   handleClickSubmit () {
     const { sendNewBlog } = this.props
-    const title = this.refs.title.value
-    let tag = this.refs.tags.value.split(',')
-    tag = tag.filter(item => (item !== ''))
-    const content = this.refs.content.value
-    const short = content
+    const { title, content } = this.state
+    const tag = this.state.tag.split(',').filter(item => item !== '')
+    const short = this.state.content
     const data = {
       blogData: {
         title,
@@ -65,11 +72,11 @@ class Write extends Component {
         {
           this.state.errMsg ? <div className={style.msg}>{this.state.errMsg}</div> : ''
         }
-        <input ref="title" type="text" placeholder="文章标题" />
-        <input ref="tags" type="text" placeholder="标签以逗号','分隔" />
-        <textarea ref="content" className={style.content}></textarea>
+        <input value={this.state.title} onChange={e => { this.handleChangeValue(e, 'title') }} type="text" placeholder="文章标题" />
+        <input value={this.state.tag} onChange={e => { this.handleChangeValue(e, 'tag') }} type="text" placeholder="标签以逗号','分隔" />
+        <textarea value={this.state.content} onChange={e => { this.handleChangeValue(e, 'content') }} className={style.content}></textarea>
         <button className={style.submit} onClick={this.handleClickSubmit}>提交</button>
-        <button className={style.reset}>重置</button>
+        <button className={style.reset} onClick={this.handleClickReset}>重置</button>
       </div>
     )
   }
