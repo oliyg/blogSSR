@@ -18,3 +18,9 @@ npm run dev
 # webpack is watching the files…
 # webpack is watching the files…
 ```
+
+## 🎉 演示动画
+
+![Untitled.gif](https://i.loli.net/2018/11/07/5be2f4560e5da.gif)
+
+gif 动图体积较大加载较慢
