@@ -4,6 +4,7 @@ import PageNotFound from './src/container/PageNotFound/'
 import App from './src/App'
 import Detail from './src/container/Detail'
 import Login from './src/container/Login'
+import Write from './src/container/Write'
 
 export default [{
   path: '/',
@@ -30,6 +31,11 @@ export default [{
     key: 'Detail',
     exact: true,
     loadData: Detail.loadData
+  }, {
+    path: '/write',
+    component: Write,
+    key: 'Write',
+    exact: true
   }, {
     component: PageNotFound
   }]
