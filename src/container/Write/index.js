@@ -50,6 +50,12 @@ class Write extends Component {
         }
       } else if (e.statusCode === 409) {
         this.setState({ errMsg: '今日已发送此篇文章，请修改标题和内容后重试' })
+      } else if (e.statusCode === 401) {
+        this.setState({ errMsg: '登录信息验证错误，请重新登录。正在跳转到登录页面' }, () => {
+          setTimeout(() => {
+            window.location.replace('/login')
+          }, 2000)
+        })
       }
     })
   }
